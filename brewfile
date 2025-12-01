@@ -1,0 +1,38 @@
+# https://docs.brew.sh/Brew-Bundle-and-Brewfile
+
+tap "warrensbox/tap"
+tap "charmbracelet/tap"
+
+# Base workstation tools
+# brew "msedit"
+brew "gdu"
+brew "direnv"
+brew "thefuck"
+brew "zoxide"
+brew "bat"
+brew "lsd"
+# brew "jq"
+brew "yq"
+brew "cowsay"
+brew "starship"
+brew "btop"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-maple-mono-nf"
+
+
+# DevOps / Development and Infrastructure management tools
+brew "charmbracelet/tap/melt"
+brew "gh"
+brew "lazygit"
+brew "talosctl"
+brew "kubernetes-cli"
+brew "kustomize"
+brew "helm"
+brew "warrensbox/tap/tfswitch"
+brew "deno"
+brew "fnm"
+brew "pnpm"
+
+# Media tools
+brew "graphviz"
+brew "ffmpeg"
