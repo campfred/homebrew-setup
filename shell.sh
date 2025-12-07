@@ -4,6 +4,7 @@ export BASE_SHELL=$(basename $SHELL)
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
 export HOMEBREW_BAT=true
+export HOMEBREW_NO_ENV_HINTS=true
 
 # TFSwitch setup
 export TF_BINARY_PATH="${HOMEBREW_PREFIX:-/home/linuxbrew/.linuxbrew}/bin/terraform"
