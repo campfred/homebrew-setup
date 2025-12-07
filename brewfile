@@ -43,5 +43,4 @@ brew "pnpm"
 brew "hugo"
 
 # Media tools
-brew "graphviz"
 brew "ffmpeg"
