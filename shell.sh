@@ -26,14 +26,23 @@ alias python-venv="python3 -m venv ${VIRTUAL_ENV:-.venv} --upgrade-deps"
 alias python-install-requirements="python3 -m pip install --upgrade --requirement requirements.txt"
 alias tf="terraform"
 alias tfs="tfswitch"
-alias brew-bundle-upgrade="code --wait ~/.homebrew/brewfile; brew bundle --file ~/.homebrew/brewfile --upgrade"
+alias brewfile="code --wait $HOME/.homebrew/brewfile; brew bundle --file $HOME/.homebrew/brewfile --upgrade"
+
+# Autocompletion setup
+source <(talosctl completion $BASE_SHELL) # https://docs.siderolabs.com/talos/v1.11/reference/cli#talosctl-completion
+source <(kubectl completion $BASE_SHELL) # https://kubernetes.io/docs/reference/kubectl/quick-reference/#kubectl-autocomplete
+source <(helm completion $BASE_SHELL) # https://helm.sh/docs/helm/helm_completion/
+source <(fnm completions --shell $BASE_SHELL) # https://github.com/Schniz/fnm#completions
 
 # Shell setup
 eval "$(thefuck --alias)"
 eval "$(thefuck --alias heck)"
 eval "$(thefuck --alias goddammit)"
 eval "$(thefuck --alias FUCK)"
-eval "$(direnv hook $(basename $SHELL))"
-eval "$(zoxide init $(basename $SHELL))"
-eval "$(starship init $(basename $SHELL))"
-neofetch
+eval "$(direnv hook $BASE_SHELL)"
+eval "$(zoxide init $BASE_SHELL)"
+eval "$(fnm env --use-on-cd --shell $BASE_SHELL)"
+eval "$(starship init $BASE_SHELL)"
+
+# Fun init stuff
+fastfetch
