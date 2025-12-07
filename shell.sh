@@ -1,5 +1,5 @@
-# Base shell configuration
-export HISTCONTROL=ignoreboth:erasedups
+source $HOME/.homebrew/profile.sh
+export BASE_SHELL=$(basename $SHELL)
 
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
