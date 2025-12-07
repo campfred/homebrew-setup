@@ -2,6 +2,7 @@
 
 tap "warrensbox/tap"
 tap "charmbracelet/tap"
+tap "siderolabs/tap"
 
 # Base workstation tools
 # brew "msedit"
@@ -25,8 +26,11 @@ cask "font-maple-mono-nf"
 brew "charmbracelet/tap/melt"
 brew "gh"
 brew "lazygit"
-brew "talosctl"
-brew "kubernetes-cli"
+brew "siderolabs/tap/sidero-tools"
+# brew "talosctl" # Included with sidero-tools
+# brew "omnictl" # Included with sidero-tools
+# brew "kubectl" # Included with sidero-tools
+# brew "kubectl-oidc_login" # Included with sidero-tools
 brew "kustomize"
 brew "helm"
 brew "warrensbox/tap/tfswitch"
