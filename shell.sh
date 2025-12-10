@@ -1,12 +1,12 @@
 #!/bin/env sh
 
+local base_shell="${SHELL##*/}"
+
 # source "$(dirname $0)/profile.sh" # Already run in .bash_profile
-# export BASE_SHELL=$(basename $SHELL) # Use {SHELL##*/} for POSIX-compliance
 
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
 export HOMEBREW_BAT=true
-export HOMEBREW_NO_ENV_HINTS=true
 
 # Aliases
 alias ls="lsd"
@@ -37,16 +37,10 @@ eval "$(thefuck --alias heck)"
 eval "$(thefuck --alias dammit)"
 eval "$(thefuck --alias goddammit)"
 eval "$(thefuck --alias wat)"
-eval "$(direnv hook ${SHELL##*/})"
-eval "$(zoxide init ${SHELL##*/})"
-eval "$(fnm env --use-on-cd --shell ${SHELL##*/})"
-eval "$(starship init ${SHELL##*/})"
-
-# Autocompletion setup
-eval "$(talosctl completion ${SHELL##*/})" # https://docs.siderolabs.com/talos/v1.11/reference/cli#talosctl-completion
-eval "$(kubectl completion ${SHELL##*/})" # https://kubernetes.io/docs/reference/kubectl/quick-reference/#kubectl-autocomplete
-eval "$(helm completion ${SHELL##*/})" # https://helm.sh/docs/helm/helm_completion/
-eval "$(fnm completions --shell ${SHELL##*/})" # https://github.com/Schniz/fnm#completions
+eval "$(direnv hook $base_shell)"
+eval "$(zoxide init $base_shell)"
+eval "$(fnm env --use-on-cd --shell $base_shell)"
+eval "$(starship init $base_shell)"
 
 # Fun init stuff
 fastfetch
