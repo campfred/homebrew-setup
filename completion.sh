@@ -1,9 +1,10 @@
 #!/bin/env sh
 
-local shell_name=${SHELL##*/}
+# shell_name="${SHELL##*/}"
+shell_name="$(basename $SHELL)"
 
 # Shell autocompletion setup
-case $shell_name in
+case "$shell_name" in
     bash)
         if [ -f /usr/local/etc/bash_completion ]; then
             . /usr/local/etc/bash_completion

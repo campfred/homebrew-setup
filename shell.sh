@@ -1,8 +1,10 @@
 #!/bin/env sh
 
-local base_shell="${SHELL##*/}"
+# shell_name="${SHELL##*/}"
+shell_name="$(basename $SHELL)"
 
-# source "$(dirname $0)/profile.sh" # Already run in .bash_profile
+_script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+source "$_script_dir/profile.sh"
 
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
@@ -25,9 +27,9 @@ alias cd..="cd .."
 alias python-install-requirements="python3 -m pip install --upgrade --requirement requirements.txt"
 alias tfs="tfswitch"
 alias tf="opentofu"
-alias brewfile-install="brew bundle --file $(dirname $0)/brewfile --upgrade"
-alias brewfile-cleanup="brew bundle cleanup --file $(dirname $0)/brewfile --force"
-alias brewfile-edit="code $(dirname $0)/.homebrew/brewfile"
+alias brewfile-install="brew bundle --file $_script_dir/brewfile --upgrade"
+alias brewfile-cleanup="brew bundle cleanup --file $_script_dir/brewfile --force"
+alias brewfile-edit="code $_script_dir/brewfile"
 alias brewfile="brewfile-edit"
 
 # Shell setup
@@ -37,10 +39,10 @@ eval "$(thefuck --alias heck)"
 eval "$(thefuck --alias dammit)"
 eval "$(thefuck --alias goddammit)"
 eval "$(thefuck --alias wat)"
-eval "$(direnv hook $base_shell)"
-eval "$(zoxide init $base_shell)"
-eval "$(fnm env --use-on-cd --shell $base_shell)"
-eval "$(starship init $base_shell)"
+eval "$(direnv hook $shell_name)"
+eval "$(zoxide init $shell_name)"
+eval "$(fnm env --use-on-cd --shell $shell_name)"
+eval "$(starship init $shell_name)"
 
 # Fun init stuff
 fastfetch

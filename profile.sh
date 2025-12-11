@@ -1,6 +1,7 @@
 #!/bin/env sh
 
-local shell_name="${SHELL##*/}"
+# shell_name="${SHELL##*/}"
+shell_name="$(basename $SHELL)"
 
 # Base shell configuration
 export HISTCONTROL=ignoreboth:erasedups
@@ -8,8 +9,9 @@ export EDITOR="code --wait"
 export VISUAL="code --wait"
 
 # Autocompletion setup
-source "$(dirname $0)/configure-completion.sh" > /dev/null 2>&1
-        
+_script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+source "$_script_dir/completion.sh"
+
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
 export HOMEBREW_BUNDLE_FILE="$(dirname $0)/.homebrew/brewfile"
@@ -28,3 +30,6 @@ export TF_PRODUCT=opentofu
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init - ${SHELL##*/})"
 # eval "$(pyenv virtualenv-init -)"
+
+# SSH Agent setup
+export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
