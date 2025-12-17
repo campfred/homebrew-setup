@@ -42,7 +42,7 @@ echo "Adding SSH key $ssh_key_path to GitHub account as signing key…"
 gh ssh-key add $ssh_key_path --type signing --title $ssh_key_comment
 
 echo "Configuring Git to use SSH for contributing…"
-git config --global url."git@github.com".insteadOf "https://github.com
+git config --global url."git@github.com".insteadOf "https://github.com"
 
 echo "Configuring Git to use SSH for signing and to sign commits by default…"
 git config --global gpg.format ssh
