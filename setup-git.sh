@@ -3,19 +3,19 @@
 default_ssh_key_algo="ed25519"
 default_ssh_key_path="$HOME/.ssh/id_$default_ssh_key_algo"
 ssh_key_path="${1:-$default_ssh_key_path}"
-ssh_key_comment="${2:-$USER@$(hostname)"
+ssh_key_comment="${2:-$USER@$(hostname)}"
 
 echo "Checking that the SSH key $ssh_key_path exists…"
 if [ ! -f "$ssh_key_path" ]
 then
   echo "No SSH key found at $ssh_key_path."
-  read -p "Would you like to venerste an SSH key now? (y/n): " choice_generate_ssh_key
+  read -p "Would you like to generate an SSH key now? (y/n): " choice_generate_ssh_key
   if [ "$choice_generate_ssh_key" = "y" ] || [ "$choice_generate_ssh_key" = "Y" ]
   then
     ssh-keygen -t $default_ssh_key_algo -C $ssh_key_comment -f $ssh_key_path
     if [ $? -ne 0 ]
     then
-      echo "Error: Failed to generate an SSH key.
+      echo "Error: Failed to generate an SSH key."
       exit 1
     fi
   else

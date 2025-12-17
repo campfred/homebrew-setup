@@ -1,17 +1,16 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
-# shell_name="${SHELL##*/}"
 shell_name="$(basename $SHELL)"
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 
-_script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-source "$_script_dir/profile.sh"
+source "$script_dir/profile.sh" # Already called from ~/.bash_profile but it seems like its setup is missing sometimes without calling it again...
 
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
 export HOMEBREW_BAT=true
 
 # Aliases
-source "$_script_dir/aliases.sh"
+source "$script_dir/aliases.sh"
 
 # Shell setup
 eval "$(thefuck --alias)"

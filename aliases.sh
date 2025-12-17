@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 # Basic command aliases
 alias ls="lsd"
@@ -23,8 +23,8 @@ alias tfs="tfswitch"
 alias tf="opentofu"
 
 # Homebrew Brewfile shortcuts
-alias brewfile-edit="code $_script_dir/brewfile"
+alias brewfile-edit="code $script_dir/brewfile"
 alias brewfile="brewfile-edit"
-alias brewfile-check="brew bundle check --file $_script_dir/brewfile"
-alias brewfile-install="brew bundle --file $_script_dir/brewfile --upgrade"
-alias brewfile-cleanup="brew bundle cleanup --file $_script_dir/brewfile --force"
+alias brewfile-check="brew bundle check --file $script_dir/brewfile"
+alias brewfile-install="brew bundle --file $script_dir/brewfile --upgrade"
+alias brewfile-cleanup="brew bundle cleanup --file $script_dir/brewfile --force"

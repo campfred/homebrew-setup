@@ -1,6 +1,5 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
-# shell_name="${SHELL##*/}"
 shell_name="$(basename $SHELL)"
 
 # Shell autocompletion setup
