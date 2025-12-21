@@ -24,6 +24,7 @@ cask "font-maple-mono-nf"
 
 # DevOps / Development and Infrastructure management tools
 brew "charmbracelet/tap/melt"
+brew "doppler"
 brew "gh"
 brew "lazygit"
 brew "siderolabs/tap/sidero-tools"
