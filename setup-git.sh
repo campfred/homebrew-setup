@@ -46,7 +46,7 @@ git config --global url."git@github.com".insteadOf "https://github.com"
 
 echo "Configuring Git to use SSH for signing and to sign commits by default…"
 git config --global gpg.format ssh
-git config --global user.signingKey $(cat $ssh_key_path.pub)
+git config --global user.signingKey "$(cat $ssh_key_path.pub)"
 git config --global commit.gpgSign true
 # https://stackoverflow.com/q/72844616
 # https://stackoverflow.com/a/72852713
