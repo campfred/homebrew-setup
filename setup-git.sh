@@ -36,10 +36,10 @@ echo "Setting up GitHub CLI with SSH protocol for Git operations…"
 gh auth login --git-protocol ssh --skip-ssh-key --web
 
 echo "Adding SSH key $ssh_key_path to GitHub account as authentication key…"
-gh ssh-key add $ssh_key_path --type authentication --title $ssh_key_comment
+gh ssh-key add $ssh_key_path.pub --type authentication --title $ssh_key_comment
 
 echo "Adding SSH key $ssh_key_path to GitHub account as signing key…"
-gh ssh-key add $ssh_key_path --type signing --title $ssh_key_comment
+gh ssh-key add $ssh_key_path.pub --type signing --title $ssh_key_comment
 
 echo "Configuring Git to use SSH for contributing…"
 git config --global url."git@github.com".insteadOf "https://github.com"
