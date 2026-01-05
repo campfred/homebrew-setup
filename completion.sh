@@ -2,6 +2,8 @@
 
 shell_name="$(basename $SHELL)"
 
+echo "Loading autocompletion stuff for ${shell_name}, it may not work lol"
+
 # Shell autocompletion setup
 case "$shell_name" in
     bash)
