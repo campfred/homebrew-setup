@@ -12,3 +12,11 @@ So, this was originally meant to contain only my `brewfile` but it evolved in ha
 4. Run the `setup-git.sh` file to setup git with GitHub login and commit signing using SSH keys
 
 Yay! 🎉
+
+## Currently supported environments 🖥️
+
+- Bazzite (Fedora / Linux) 🐧
+
+### Potentially working (untested) environments ℹ️
+
+- macOS 🍏
