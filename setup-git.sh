@@ -52,9 +52,13 @@ git config --global commit.gpgSign true
 # https://stackoverflow.com/a/72852713
 
 echo "Configuring global username and email on Git…"
-read -p "Username to use:" git_username
-git config --global user.name $git_username
-read -p "Email to use:" git_email
+default_git_username="$USER"
+read -p "Username to use [$default_git_username]: " git_username
+git_username="${git_username:-$default_git_username}"
+git config --global user.name "$git_username"
+default_git_email="${git_username}@$(hostname)"
+read -p "Email to use [$default_git_email]: " git_email
+git_email="${git_email:-$default_git_email}"
 git config --global user.email $git_email
 
 echo "Git setup complete!"
