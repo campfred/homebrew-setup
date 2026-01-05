@@ -5,9 +5,8 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 
 source "$script_dir/profile.sh" # Already called from ~/.bash_profile but it seems like its setup is missing sometimes without calling it again...
 
-# Homebrew setup
-# https://docs.brew.sh/Manpage#environment
-export HOMEBREW_BAT=true
+# Autocompletion setup
+source "$script_dir/completion.sh"
 
 # Aliases
 source "$script_dir/aliases.sh"

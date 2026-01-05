@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+
 # Basic command aliases
 alias ls="lsd"
 alias l="ls -l"
@@ -8,23 +10,25 @@ alias la="lsd -a"
 alias lla="lsd -lah"
 alias lt="lsd --tree"
 alias cat="bat"
+export HOMEBREW_BAT=true # https://docs.brew.sh/Manpage#environment
 alias cd="z"
-alias cd..="cd .."
+alias neofetch="fastfetch"
+alias neowofetch="fastfetch"
 
-# Python shortcuts
+# Brewry
+alias brewfile-edit="$VISUAL $script_dir/brewfile"
+alias brewfile="brewfile-edit"
+alias brewfile-check="brew bundle check --file $HOMEBREW_BUNDLE_FILE"
+alias brewfile-install="brew bundle --file $HOMEBREW_BUNDLE_FILE --upgrade"
+alias brewfile-cleanup="brew bundle cleanup --file $HOMEBREW_BUNDLE_FILE --force"
+
+# Python serpentings
 # alias py="python3"
 # alias python="python3"
 # alias pie="python3"
 # alias python-venv="python3 -m venv ${VIRTUAL_ENV:-.venv} --upgrade-deps"
 alias python-install-requirements="python3 -m pip install --upgrade --requirement requirements.txt"
 
-# Terraform / OpenTofu shortcuts
+# Terraforming and Tofu cooking machinery
 alias tfs="tfswitch"
 alias tf="opentofu"
-
-# Homebrew Brewfile shortcuts
-alias brewfile-edit="code $script_dir/brewfile"
-alias brewfile="brewfile-edit"
-alias brewfile-check="brew bundle check --file $script_dir/brewfile"
-alias brewfile-install="brew bundle --file $script_dir/brewfile --upgrade"
-alias brewfile-cleanup="brew bundle cleanup --file $script_dir/brewfile --force"

@@ -34,14 +34,15 @@ brew "siderolabs/tap/sidero-tools"
 # brew "kubectl-oidc_login" # Included with sidero-tools
 brew "kustomize"
 brew "helm"
-brew "warrensbox/tap/tfswitch"
+brew "warrensbox/tap/tfswitch" # https://tfswitch.warrensbox.com/
 brew "go"
 brew "python@3.12"
 brew "python-tk@3.12"
 brew "deno"
-brew "fnm"
+brew "fnm" # https://github.com/Schniz/fnm
 brew "pnpm"
 brew "hugo"
 
 # Media tools
 brew "ffmpeg"
+brew "imagemagick"

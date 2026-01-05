@@ -8,9 +8,6 @@ export HISTCONTROL=ignoreboth:erasedups
 export EDITOR="code --wait"
 export VISUAL="code --wait"
 
-# Autocompletion setup
-source "$script_dir/completion.sh"
-
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
 export HOMEBREW_BUNDLE_FILE="$(dirname $0)/.homebrew/brewfile"
@@ -23,4 +20,7 @@ export TF_BINARY_PATH="${HOMEBREW_PREFIX:-/home/linuxbrew/.linuxbrew}/bin/terraf
 export TF_PRODUCT=opentofu
 
 # SSH Agent setup
-export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+if [ -f $HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock ]
+then
+    export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+fi
