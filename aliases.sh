@@ -12,6 +12,7 @@ alias lt="lsd --tree"
 alias cat="bat"
 export HOMEBREW_BAT=true # https://docs.brew.sh/Manpage#environment
 alias cd="z"
+alias gearlever="flatpak run it.mijorus.gearlever" # gearlever.mijorus.it/docs/update-source/
 alias neofetch="fastfetch"
 alias neowofetch="fastfetch"
 
