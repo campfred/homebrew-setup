@@ -17,11 +17,11 @@ alias neofetch="fastfetch"
 alias neowofetch="fastfetch"
 
 # Brewry
-alias brewfile-edit="$VISUAL $script_dir/brewfile"
+alias brewfile-edit="brew bundle edit"
 alias brewfile="brewfile-edit"
-alias brewfile-check="brew bundle check --file $HOMEBREW_BUNDLE_FILE"
-alias brewfile-install="brew bundle --file $HOMEBREW_BUNDLE_FILE --upgrade"
-alias brewfile-cleanup="brew bundle cleanup --file $HOMEBREW_BUNDLE_FILE --force"
+alias brewfile-check="brew bundle check"
+alias brewfile-install="brew bundle --upgrade"
+alias brewfile-cleanup="brew bundle cleanup --force"
 
 # Python serpentings
 # alias py="python3"

@@ -10,7 +10,7 @@ export VISUAL="code --wait"
 
 # Homebrew setup
 # https://docs.brew.sh/Manpage#environment
-export HOMEBREW_BUNDLE_FILE="$(dirname $0)/.homebrew/brewfile"
+export HOMEBREW_BUNDLE_FILE="$script_dir/brewfile"
 export HOMEBREW_NO_ANALYTICS=true
 export HOMEBREW_NO_ENV_HINTS=true
 
