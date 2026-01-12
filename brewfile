@@ -1,4 +1,5 @@
 # https://docs.brew.sh/Brew-Bundle-and-Brewfile
+# https://docs.projectbluefin.io/blog/flatpak-support-in-brewfiles/
 
 tap "warrensbox/tap"
 tap "charmbracelet/tap"
@@ -12,7 +13,7 @@ brew "thefuck"
 brew "zoxide"
 brew "bat"
 brew "lsd"
-# brew "jq"
+brew "jq"
 brew "yq"
 brew "cowsay"
 brew "starship"
@@ -20,6 +21,31 @@ brew "btop"
 brew "gdu"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-maple-mono-nf"
+flatpak "com.yubico.yubioath"
+flatpak "com.bitwarden.desktop"
+flatpak "org.fkoehler.KTailctl"
+flatpak "io.github.martchus.syncthingtray"
+flatpak "org.localsend.localsend_app"
+flatpak "io.github.wiiznokes.fan-control"
+flatpak "io.missioncenter.MissionCenter"
+# flatpak "org.deskflow.deskflow"
+flatpak "org.fedoraproject.MediaWriter"
+
+# Hardware software
+flatpak "net.displaycal.DisplayCAL"
+flatpak "net.opentabletdriver.OpenTabletDriver"
+flatpak "org.pipewire.Helvum"
+
+# Package management for same day delivery lol
+flatpak "io.github.kolunmi.Bazaar" # Handled by Bazzite
+flatpak "io.github.flattool.Warehouse"
+flatpak "io.github.prateekmedia.appimagepool"
+flatpak "it.mijorus.gearlever"
+flatpak "com.github.tchx84.Flatseal"
+flatpak "com.ranfdev.DistroShelf"
+flatpak "net.davidotek.pupgui2" # ProtonUp-Qt
+flatpak "com.usebottles.bottles"
+flatpak "org.gnome.DejaDup"
 
 
 # DevOps / Development and Infrastructure management tools
@@ -42,10 +68,56 @@ brew "deno"
 brew "fnm" # https://github.com/Schniz/fnm
 brew "pnpm"
 brew "hugo"
+flatpak "com.axosoft.GitKraken"
+flatpak "com.gitbutler.gitbutler"
+flatpak "com.termius.Termius"
+flatpak "org.kde.yakuake"
+flatpak "com.rustdesk.RustDesk"
 
 # Media tools
 brew "ffmpeg"
 brew "imagemagick"
+flatpak "io.github.lainsce.Colorway"
+flatpak "org.blender.Blender"
+flatpak "io.github.tobagin.scramble"
+flatpak "io.gitlab.theevilskeleton.Upscaler"
+flatpak "com.calibre_ebook.calibre"
 
 # Comms
-flatpak "org.signal.Signal" # https://docs.projectbluefin.io/blog/flatpak-support-in-brewfiles/
+flatpak "org.signal.Signal"
+flatpak "org.telegram.desktop"
+flatpak "dev.vencord.Vesktop"
+
+# Productivity apps
+flatpak "app.zen_browser.zen"
+flatpak "org.kde.kweather"
+flatpak "me.proton.Mail"
+flatpak "org.kde.kontact"
+flatpak "io.github.brunofin.Cohesion"
+flatpak "md.obsidian.Obsidian"
+flatpak "net.agalwood.Motrix"
+flatpak "org.kde.okular"
+flatpak "org.kde.skanpage"
+flatpak "org.onlyoffice.desktopeditors"
+flatpak "org.kde.okular"
+flatpak "org.kde.skanpage"
+flatpak "org.kde.kcalc"
+flatpak "org.kde.kclock"
+
+# Entertaining entertainment
+flatpak "net.filebot.FileBot"
+flatpak "com.github.iwalton3.jellyfin-media-player"
+flatpak "org.jellyfin.JellyfinDesktop"
+flatpak "com.spotify.Client"
+flatpak "io.github.nokse22.high-tide" # TIDAL client
+flatpak "tech.feliciano.pocket-casts"
+flatpak "org.nicotine_plus.Nicotine"
+flatpak "com.github.neithern.g4music"
+flatpak "camp.nook.nookdesktop"
+flatpak "io.github.TheWisker.Cavasik"
+flatpak "com.github.k4zmu2a.spacecadetpinball"
+flatpak "org.upscayl.Upscayl"
+flatpak "org.kde.gwenview"
+flatpak "org.kde.koko"
+flatpak "org.kde.haruna"
+flatpak "org.prismlauncher.PrismLauncher"
