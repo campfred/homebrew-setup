@@ -1,5 +1,21 @@
 #!/usr/bin/env sh
 
+if command -v ssh &> /dev/null
+then
+  echo "SSH is installed."
+else
+  echo "Error: SSH is not installed. Please install SSH and re-run this script."
+  exit 1
+fi
+
+if command -v git &> /dev/null
+then
+  echo "Git is installed."
+else
+  echo "Error: Git is not installed. Please install Git and re-run this script."
+  exit 1
+fi
+
 default_ssh_key_algo="ed25519"
 default_ssh_key_path="$HOME/.ssh/id_$default_ssh_key_algo"
 ssh_key_path="${1:-$default_ssh_key_path}"
@@ -32,33 +48,65 @@ then
 fi
 echo "SSH key $ssh_key_path found."
 
-echo "Setting up GitHub CLI with SSH protocol for Git operations…"
-gh auth login --git-protocol ssh --skip-ssh-key --web
+if command -v gh &> /dev/null
+then
+  echo "Setting up GitHub CLI…"
 
-echo "Adding SSH key $ssh_key_path to GitHub account as authentication key…"
-gh ssh-key add $ssh_key_path.pub --type authentication --title $ssh_key_comment
+  echo " - Logging in with SSH protocol for Git operations…"
+  gh auth login --git-protocol ssh --skip-ssh-key --web
 
-echo "Adding SSH key $ssh_key_path to GitHub account as signing key…"
-gh ssh-key add $ssh_key_path.pub --type signing --title $ssh_key_comment
+  echo " - Adding SSH key $ssh_key_path to GitHub account as authentication and signing keys…"
+  gh ssh-key add $ssh_key_path.pub --type authentication --title $ssh_key_comment
+  gh ssh-key add $ssh_key_path.pub --type signing --title $ssh_key_comment
+else
+  echo "GitHub CLI (gh) not found, skipping GitHub CLI setup."
+fi
 
-echo "Configuring Git to use SSH for contributing…"
-git config --global url."git@github.com".insteadOf "https://github.com"
 
-echo "Configuring Git to use SSH for signing and to sign commits by default…"
+platforms=(
+  "codeberg.org"
+  "gitlab.com"
+  "github.com"
+)
+
+echo "Setting up Git configuration…"
+echo " - Redirect to SSH for connecting…"
+for platform in "${platforms[@]}"; do
+  git config --global url."git@${platform}".insteadOf "https://${platform}"
+done
+
+echo " - Use SSH for signing and sign commits by default…"
 git config --global gpg.format ssh
 git config --global user.signingKey "$(cat $ssh_key_path.pub)"
 git config --global commit.gpgSign true
 # https://stackoverflow.com/q/72844616
 # https://stackoverflow.com/a/72852713
 
-echo "Configuring global username and email on Git…"
+echo " - Configuring global commit user name and email…"
 default_git_username="$USER"
-read -p "Username to use [$default_git_username]: " git_username
+read -p " - - Username to use [$default_git_username]: " git_username
 git_username="${git_username:-$default_git_username}"
 git config --global user.name "$git_username"
 default_git_email="${git_username}@$(hostname)"
-read -p "Email to use [$default_git_email]: " git_email
+read -p " - - Email to use [$default_git_email]: " git_email
 git_email="${git_email:-$default_git_email}"
 git config --global user.email $git_email
+
+
+echo "Setting up SSH client configuration…"
+echo " - Define the SSH key ($ssh_key_path) to use…"
+ssh_config_file="$HOME/.ssh/config"
+{
+  echo "# Added by setup-git.sh on $(date)"
+  echo "Host *.git"
+  echo "  User git"
+  echo "  IdentityFile $ssh_key_path"
+  for platform in "${platforms[@]}"
+  do
+    echo ""
+    echo "Host ${platform}"
+    echo "  HostName ${platform}"
+  done
+} >> "$ssh_config_file"
 
 echo "Git setup complete!"
