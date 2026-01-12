@@ -48,4 +48,4 @@ brew "ffmpeg"
 brew "imagemagick"
 
 # Comms
-flatpak "org.signal.Signal", remote: "signal-flatpak", url: "https://signalflatpak.github.io/signal" # https://docs.projectbluefin.io/blog/flatpak-support-in-brewfiles/
+flatpak "org.signal.Signal" # https://docs.projectbluefin.io/blog/flatpak-support-in-brewfiles/
