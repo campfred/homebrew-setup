@@ -25,6 +25,7 @@ platforms=(
   "codeberg.org"
   "gitlab.com"
   "github.com"
+  "bitbucket.org"
 )
 
 echo "Checking that the SSH key $ssh_pubkey_path exists…"
