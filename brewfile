@@ -60,6 +60,7 @@ brew "siderolabs/tap/sidero-tools"
 # brew "kubectl-oidc_login" # Included with sidero-tools
 brew "kustomize"
 brew "helm"
+brew "kubeseal"
 brew "warrensbox/tap/tfswitch" # https://tfswitch.warrensbox.com/
 brew "go"
 brew "python@3.12"
