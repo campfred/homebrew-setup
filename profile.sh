@@ -20,7 +20,4 @@ export TF_BINARY_PATH="${HOMEBREW_PREFIX:-/home/linuxbrew/.linuxbrew}/bin/terraf
 export TF_PRODUCT=opentofu
 
 # SSH Agent setup
-if [ -f $HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock ]
-then
-    export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
-fi
+export SSH_AUTH_SOCK=/home/$USER/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
