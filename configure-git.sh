@@ -16,6 +16,7 @@ else
   exit 1
 fi
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
 default_ssh_key_algo="ed25519"
 default_ssh_key_path="$HOME/.ssh/id_$default_ssh_key_algo"
 ssh_key_path="${1:-$default_ssh_key_path}"
@@ -75,28 +76,41 @@ fi
 
 
 echo "\nSetting up Git configuration…"
-echo " - Redirect to SSH for connecting…"
-for platform in "${platforms[@]}"; do
-  git config --global url."git@${platform}".insteadOf "https://${platform}"
-done
 
-echo " - Use SSH for signing and sign commits by default…"
-git config --global gpg.format ssh
-# git config --global user.signingKey "$(cat $ssh_pubkey_path)"
-git config --global user.signingKey "$ssh_pubkey_path"
-git config --global commit.gpgSign true
-# https://stackoverflow.com/q/72844616
-# https://stackoverflow.com/a/72852713
+echo " - Configuring base Git configurations…"
+git_baseconfig_path="$script_dir/git.conf"
+git_baseignore_path="$script_dir/.gitignore"
+echo " - - Including base configuration from $git_baseconfig_path…"
+git config --global include.path "$git_baseconfig_path"
+echo " - - Setting global Git Ignore file at $git_baseignore_path…"
+git config --global core.excludesFile "$git_baseignore_path"
 
-echo " - Configuring global commit user name and email…"
-default_git_username="$USER"
-read -p " - - Username to use [$default_git_username]: " git_username
-git_username="${git_username:-$default_git_username}"
-git config --global user.name "$git_username"
-default_git_email="${git_username}@$(hostname)"
-read -p " - - Email to use [$default_git_email]: " git_email
-git_email="${git_email:-$default_git_email}"
-git config --global user.email $git_email
+if [ -z "$(git config --global user.signingKey)" ]
+then
+  echo " - Use SSH for signing and sign commits by default …"
+  # git config --global user.signingKey "$(cat $ssh_pubkey_path)"
+  git config --global user.signingKey "$ssh_pubkey_path"
+  git config --global gpg.format ssh
+  git config --global commit.gpgSign true
+  # https://stackoverflow.com/q/72844616
+  # https://stackoverflow.com/a/72852713
+fi 
+
+if [ -z "$(git config --global user.name)" ] && [ -z "$(git config --global user.email)" ]
+then
+  echo " - Configuring global commit user name and email…"
+  default_git_username="$USER"
+  read -p " - - Username to use [$default_git_username]: " git_username
+  git_username="${git_username:-$default_git_username}"
+  git config --global user.name "$git_username"
+  default_git_email="${git_username}@$(hostname)"
+  read -p " - - Email to use [$default_git_email]: " git_email
+  git_email="${git_email:-$default_git_email}"
+  git config --global user.email $git_email
+else
+  echo " - Gir user name and email already configured, skipping."
+fi
+
 
 
 
